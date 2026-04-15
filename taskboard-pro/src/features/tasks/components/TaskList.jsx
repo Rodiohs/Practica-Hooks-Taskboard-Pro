@@ -1,13 +1,25 @@
-export function TaskList({ tasks }) {
-  return (
-    <section>
-      <h3>Lista de tareas</h3>
+import { TASK_UI_TEXT } from "../constants/task-ui.constants"
+import { HTML_TAGS } from "../../../shared/constants/html-tags.constants"
 
-      <ul>
+export function TaskList({ tasks }) {
+  const SectionTag = HTML_TAGS.SECTION
+  const TitleTag = HTML_TAGS.H3
+  const PTag = HTML_TAGS.P
+  const UlTag = HTML_TAGS.UL
+  const LiTag = HTML_TAGS.LI
+  return (
+    <SectionTag>
+      <TitleTag>{TASK_UI_TEXT.LIST_TITLE}</TitleTag>
+
+      {tasks.length === 0 ? (
+        <PTag>{TASK_UI_TEXT.EMPTY_MESSAGE}</PTag>
+      ) : null}
+
+      <UlTag>
         {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
+          <LiTag key={task.id}>{task.title}</LiTag>
         ))}
-      </ul>
-    </section>
+      </UlTag>
+    </SectionTag>
   )
 }
