@@ -3,15 +3,18 @@ import { TaskBoard } from "./features/tasks/components/TaskBoard"
 import { ThemeProvider } from "./features/theme/context/ThemeProvider"
 import { ThemeToggle } from "./features/theme/components/ThemeToggle"
 import { useTheme } from "./features/theme/hooks/useTheme"
+import { useDocumentTitle } from "./shared/hooks/useDocumentTitle"
 import "./index.css"
 
 function AppContent() {
   const MainTag = HTML_TAGS.MAIN
   const TitleTag = HTML_TAGS.H1
 const { theme } = useTheme()
+  useDocumentTitle("TaskBoard Hooks Lab")
+
   return (
     <MainTag className={theme}>
-      <TitleTag>TaskBoard Hooks Lab</TitleTag>
+      {/* <TitleTag>TaskBoard Hooks Lab</TitleTag> */}
       <ThemeToggle />
       <TaskBoard />
     </MainTag>
